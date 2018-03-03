@@ -1,3 +1,5 @@
+![Demo](https://raw.githubusercontent.com/morinocat/LightsField/master/working-demo.gif)
+
 # Lights Field
 It is Garmin Edge's Connect IQ Data Field made for FLY12CE and FLY6CE.
 
