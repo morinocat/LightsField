@@ -4,21 +4,9 @@ var headLightModeNum=0;
 var tailLightModeNum=0;
 
 class LightsFieldDelegate extends Ui.InputDelegate {
-	function setHeadLight(mode) {
-		// HACK : don't know why must to 3 times..
-		for(var i=0; i <= 3; i++) {
-        	mLightNetwork.setHeadlightsMode(mode);
-        }
-	}
-	
-	function setTailLight(mode) {
-		mLightNetwork.setTaillightsMode(mode);
-	}
 
 	function initialize() {
 		InputDelegate.initialize();
-		setHeadLight(0);
-		setTailLight(0);
 	}
 	
     function onTap(clickEvent) {
@@ -51,7 +39,7 @@ class LightsFieldDelegate extends Ui.InputDelegate {
 	    		default:
 	    			headLightModeNum=0;
 	    	}
-	    	setHeadLight(headLightModeNum);
+	    	//mLightNetwork.setHeadlightsMode(headLightModeNum);
         } else {
 	    	switch(tailLightModeNum) {
 	    		case 0 : tailLightModeNum=1;
@@ -65,7 +53,7 @@ class LightsFieldDelegate extends Ui.InputDelegate {
 	    		default:
 	    			tailLightModeNum=0;
 	    	}
-	        setTailLight(tailLightModeNum);
+	        //mLightNetwork.setTaillightsMode(tailLightModeNum);
         }
     }
 }

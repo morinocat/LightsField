@@ -106,7 +106,6 @@ class LightsFieldView extends Ui.DataField  {
 		
         var bikeLights=mLightNetwork.getBikeLights();
 
-
         if(bikeLights != null) {
 	        for(var i=0; i<bikeLights.size(); i++) {
 				switch(bikeLights[i].type) {
@@ -117,25 +116,34 @@ class LightsFieldView extends Ui.DataField  {
 					    dc.drawText(dc.getWidth()*0.25, dc.getHeight()*0.85, Gfx.FONT_XTINY, 
 					    			getBatteryStateText(mLightNetwork.getBatteryStatus(bikeLights[i].identifier).batteryStatus),
 								   	(Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER));
+					   	//HACK:T_T
+					   	mLightNetwork.setHeadlightsMode(headLightModeNum);
 						break;
 					case AntPlus.LIGHT_TYPE_TAILLIGHT :
 						//tailValue.setText("Tail : "+tailLightModeNum);
-						dc.drawText(dc.getWidth()*0.75, dc.getHeight()*0.5, Gfx.FONT_MEDIUM , getLightModeText(tailLightModeNum),
+						var currentStatus = bikeLights[i].mode == tailLightModeNum ? tailLightModeNum : -1;
+						dc.drawText(dc.getWidth()*0.75, dc.getHeight()*0.5, Gfx.FONT_MEDIUM , getLightModeText(currentStatus),
 						           	(Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER));
 			            dc.drawText(dc.getWidth()*0.75, dc.getHeight()*0.85, Gfx.FONT_XTINY, 
 			            			getBatteryStateText(mLightNetwork.getBatteryStatus(bikeLights[i].identifier).batteryStatus),
 								   	(Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER));
-						tailLightModeNum = bikeLights[i].mode;
+					   	//HACK:T_T
+					   	mLightNetwork.setTaillightsMode(tailLightModeNum);
 						break;
 					case AntPlus.LIGHT_TYPE_SIGNAL_CONFIG :
+						System.println("AntPlus.LIGHT_TYPE_SIGNAL_CONFIG");
 						break;
 					case AntPlus.LIGHT_TYPE_SIGNAL_LEFT :
+						System.println("AntPlus.LIGHT_TYPE_SIGNAL_LEFT");
 						break;
 					case AntPlus.LIGHT_TYPE_SIGNAL_RIGHT :
+						System.println("AntPlus.LIGHT_TYPE_SIGNAL_RIGHT");
 						break;
 					case AntPlus.LIGHT_TYPE_OTHER :
+						System.println("AntPlus.LIGHT_TYPE_OTHER");
 						break;
 					default:
+						System.println("AntPlus.default");
 						break; 
 				}
 	        }
